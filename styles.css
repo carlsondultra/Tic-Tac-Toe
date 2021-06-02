@@ -43,3 +43,18 @@ h1 {
     color: var(--red);
     background-color: red;
 }
+
+button {
+    padding: 10px 20px;
+    border-radius: 10px;
+    background-color: var(--red);
+    color: white;
+    border-color: var(--red);
+    font-size: 18px;
+    transition: 100ms transform;
+}
+
+button:hover {
+    cursor: pointer;
+    transform: translateY(-3px);
+}
