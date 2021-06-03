@@ -1,5 +1,11 @@
 const boxes = Array.from(document.getElementsByClassName("box"));
-console.log(boxes);
+
+const spaces = [null, null, null, null, null, null, null, null, null];
+const O_TEXT = "0"; 
+const X_TEXT = "X";
+let currentPlayer = O_TEXT;
+
+
 
 const drawBoard = () => {
     boxes.forEach((box, index) => {
@@ -22,7 +28,14 @@ const drawBoard = () => {
 };
 
 const boxClicked = (e) => {
-    console.log('box clicked')
+    console.log('box clicked');
+    const id = e.target.id;
+    console.log(id);
+    if(!spaces[id]){
+        spaces[id] = currentPlayer;
+        e.target.innerText = currentPlayer;
+        currentPlayer = currentPlayer === O_TEXT ? X_TEXT : O_TEXT;
+    }
 }
 
 drawBoard();
