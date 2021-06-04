@@ -1,12 +1,13 @@
 const boxes = Array.from(document.getElementsByClassName("box"));
 const playText = document.getElementById('playText');
-const spaces = [null, null, null, null, null, null, null, null, null];
+const restartBtn = document.getElementById('restartBtn');
+const spaces = [];
 const O_TEXT = "0"; 
 const X_TEXT = "X";
-let currentPlayer = O_TEXT;
+let currentPlayer;
 
 
-
+/* Adding color to the actual board */
 const drawBoard = () => {
     boxes.forEach((box, index) => {
         let designString = '';
@@ -81,7 +82,27 @@ const playerHasWon = () => {
             console.log(`${currentPlayer} wins horizontally in the middle!`);
             return true;
         }
+        if(spaces[2] === currentPlayer && spaces[6] === currentPlayer){
+            console.log(`${currentPlayer} wins diagonally!`);
+            return true;
+        }
     }
+};
+
+
+
+const restart = () => {
+    spaces.forEach((space, index) => {
+        spaces[index] = null;
+    });
+    boxes.forEach((box) => {
+        box.innerText = '';
+    });
+    playText.innerText = `Tic Tac Toe`;
+    currentPlayer = O_TEXT;
 }
 
+restartBtn.addEventListener('click', restart);
+
+restart();
 drawBoard();
